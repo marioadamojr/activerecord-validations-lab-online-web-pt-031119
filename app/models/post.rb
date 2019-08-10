@@ -15,7 +15,7 @@ class Post < ActiveRecord::Base
   ]
 
   def non_clickbait
-    if self.title.include?(clickbait_words)
+    if clickbait_words.none? { |pat| pat.match title}
       errors.add(:title, "No Clickbait Allowed")
     end
   end

@@ -5,7 +5,7 @@ class Post < ActiveRecord::Base
   validates :category, inclusion: { in: %w(Fiction Non-Fiction) }
   validate :non_clickbait
 
-  private
+  
 
   clickbait_words = [
     /Won't Believe/i,

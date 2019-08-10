@@ -7,7 +7,7 @@ class Post < ActiveRecord::Base
 
   private
   def non_clickbait
-    if self.title.include?("Won't Believe", "Secret", "Top [0..100]", "Guess")
+    if self.title.include?("Won't Believe" || "Secret" || "Top [0..100]" || "Guess")
       errors.add(:title, "No Clickbait Allowed")
     end
   end

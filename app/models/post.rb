@@ -6,8 +6,16 @@ class Post < ActiveRecord::Base
   validate :non_clickbait
 
   private
+
+  clickbait_words = [
+    /Won't Believe/i,
+    /Secret/i,
+    /Top [0-9]*/i,
+    /Guess/i
+  ]
+
   def non_clickbait
-    if self.title.include?("Won't Believe" || "Secret" || "Top [0..100]" || "Guess")
+    if self.title.include?(clickbait_words)
       errors.add(:title, "No Clickbait Allowed")
     end
   end
